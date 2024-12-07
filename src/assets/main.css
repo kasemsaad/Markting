@@ -7,7 +7,9 @@
     font-family: 'Montserrat-Arabic';
     src: url('@/assets/fonts/Montserrat-Arabic Regular.ttf') format('woff2');
 }
-
+body {
+    background-color: #F8F8F8;
+}
 .page-container {
     width: 90%;
     margin: auto;

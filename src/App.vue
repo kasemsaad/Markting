@@ -1,9 +1,13 @@
 <script setup>
-  import Whatsapp from './components/Whatsapp/Whatsapp.vue';
+  import Dashboard from './components/Whatsapp/Dashboard/Dashboard.vue';
+  import Whatsapp from './components/Whatsapp/Dashboard/Whatsapp.vue';
+  import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <Whatsapp />
+  <!-- <Whatsapp /> -->
+  <!-- <Dashboard /> -->
+   <RouterView />
 </template>
 
 <style scoped>
