@@ -10,7 +10,20 @@
 body {
     background-color: #F8F8F8;
 }
-.page-container {
-    width: 90%;
+.app-container {
+    width: 95%;
+    /* max-width: 1200px; */
+    /* margin-top: 10px ; */
     margin: auto;
+    border-radius: 20px;
+    display: flex;
+    height: 98vh;
+  }
+  .sidebar {
+    border-radius: 20px;
+  }
+  .sides-container {
+    width: 95%;
+    height: 100vh;
+    overflow-y: hidden;
 }

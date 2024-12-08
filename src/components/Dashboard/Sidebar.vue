@@ -1,8 +1,8 @@
 <template>
   <!-- Sidebar -->
-  <aside class="sidebar overflow-y-auto w-[21%] bg-[#EFEFEF] mt-4 p-4 pt-6 flex flex-col">
+  <aside class="sidebar overflow-y-auto w-[21%] bg-[#EFEFEF] p-4 pt-6 flex mt-4 flex-col">
     <div class="mb-4 text-xl font-bold">
-      <img src="../../../assets/icons/logo-colored.svg" alt="Logo">
+      <img src="../../assets/icons/logo-colored.svg" alt="Logo">
     </div>
     <ul class="font-medium text-xs text-black">
       <li
@@ -42,7 +42,7 @@
           />
         </div>
         
-        <!-- Sub menu rendering -->
+        <!-- Sub menu -->
         <ul
           v-if="dropdownState[item.id]"
           class="pl-8 mt-2 transition-all overflow-hidden"
@@ -64,7 +64,7 @@
               class="mr-2"
               v-if="subItem.icon"  
             />
-            <span v-else class="icon-placeholder"></span> <!-- Fallback if sub-item icon is missing -->
+            <span v-else class="icon-placeholder"></span>
             {{ subItem.name }}
           </li>
         </ul>
@@ -74,8 +74,7 @@
 </template>
 
 <script setup>
-
-import { reactive, ref } from "vue";
+  import { reactive, ref } from "vue";
   import whatsappLight from '@/assets/icons/whatsapp-light.svg'
   import whatsappSelected from '@/assets/icons/colored-whatsapp.svg'
   import messengerLight from '@/assets/icons/messenger.svg'
@@ -327,18 +326,18 @@ li:hover {
   border-radius: 10px;
 }
 
-  li:hover {
-    cursor: pointer;
-  }
-  
-  .users-chat {
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-  }
-  
-  .search-input {
-    border-radius: 10px;
-  }
+li:hover {
+  cursor: pointer;
+}
+
+.users-chat {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.search-input {
+  border-radius: 10px;
+}
   </style>
   
 

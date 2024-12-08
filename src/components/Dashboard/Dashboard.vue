@@ -2,7 +2,7 @@
   <div class="dashboard app-container ">
     <Sidebar />
     <div class="main-content py-4 pl-4 flex-1">
-      <Header />
+      <Header title="Dashboard" :hide-menu="false"/>
       <div class="overview">
         <StatsCard title="Contacts" :value="1296" percentage="18" />
         <StatsCard title="Campaigns" :value="212" percentage="18" />
@@ -32,21 +32,6 @@ import Campaigns from './Campaigns.vue';
 </script>
 
 <style scoped>
-  body {
-    background-color: #d5d5d5;
-  }
-  .app-container {
-    width: 95%;
-    max-width: 1200px;
-    margin: auto;
-    border-radius: 20px;
-    display: flex;
-    height: 98vh;
-  }
-  
-  .sidebar {
-    border-radius: 20px;
-  }
   .dashboard {
     display: flex;
   }

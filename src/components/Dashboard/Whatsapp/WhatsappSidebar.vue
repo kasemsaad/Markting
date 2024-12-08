@@ -1,55 +1,20 @@
 <template>
   <div class="app-container bg-white rounded-3xl overflow-hidden flex w-[90%] mx-auto">
   <!-- Sidebar -->
-  <aside class="sidebar w-[45%] bg-[#EFEFEF] p-6 flex flex-col">
-    <div class="mb-8 text-xl font-bold">
-      <img src="../../../assets/icons/logo-colored.svg" alt="Logo">
-    </div>
-    <ul class="font-medium text-xs text-black">
-      <li
-        v-for="item in listItems"
-        :key="item.id"
-        class="flex justify-between items-center py-1 h-[44px] px-3 cursor-pointer rounded-lg transition-all"
-        :class="{
-          'bg-[#393939] text-white': selectedItem === item.id,
-          'text-black bg-transparent': selectedItem !== item.id
-        }"
-        @click="toggleDropdown(item.id); selectItem(item.id)"
-      
-      >
-        <div class="flex items-center">
-          <img
-            :src="selectedItem === item.id
-              ? item.iconWhite
-              : item.icon"
-            alt="icon"
-          />
-          <!-- <a href="#" class="ml-4">{{ item.name }}</a> -->
-          <router-link 
-              :to="item.route"
-              class="ml-4"
-              @click.native.stop="selectItem(item.id)">
-              {{ item.name }}
-          </router-link>
-        </div>
-        <img
-          v-if="item.hasArrow"
-          :src="selectedItem === item.id
-            ? arrowUp
-            : arrowDown"
-          alt="arrow"
-        />
-      </li>
-    </ul>
-  </aside>
+  <Sidebar class="w-[42%] mt-[-.2px]"/>
     <!-- Chat Lists -->
     <div class="chat-list w-[55%] bg-white p-6">
     <div>
       <div class="flex justify-between items-center mb-7">
-        <img class="whatsapp w-36" src="../../../assets/icons/whatsapp.svg" alt="">
-        <select name="" id="" class="text-sm px-2 border border-[#DDD] rounded-md w-28 h-9">
+        <img v-if="hideLogo" class="whatsapp w-36" src="../../../assets/icons/whatsapp.svg" alt="">
+        <p class="text-[20px]" v-if="!hideText">Contacts</p>
+        <select name="" id="" v-if="!hideSelect" class="text-sm px-2 border border-[#DDD] rounded-md w-28 h-9">
           <option value="" class="">All(3)</option>
         </select>
+        <div class="flex">
+          <router-link to="/contacts/addContacts" v-if="!hideAddBtn" class="bg-[#DC4852] text-[#FDFDFD] text-[14px] rounded-md p-2 flex items-center mr-2"><img src="../../../assets/icons/add.svg" alt="" class="mr-1"> <span class="font-light">Add</span></router-link>
+        <a href="#" class="bg-[#111111] p-3 rounded-md " v-if="!hideDots"><img src="../../../assets/icons/dots-2.svg" alt=""></a>
+        </div>
       </div>
       <div class="relative mb-4">
         <input
@@ -79,6 +44,18 @@
         }"
         @click="selectChat(chat.id)"
       >
+      <img
+      v-if="selectedChat === chat.id"
+      src="../../../assets/icons/on.svg"
+      alt="On"
+      class="w-3 h-4 mr-2"
+    />
+    <img
+      v-else
+      src="../../../assets/icons/off.svg"
+      alt="Off"
+      class="w-3 h-4 mr-2"
+    />
         <img :src="chat.image" alt="" class="w-10 h-10 rounded-lg mr-4" />
         <div>
           <p class="text-sm text-black">{{ chat.name }}</p>
@@ -93,6 +70,7 @@
 </template>
 
 <script setup>
+import Sidebar from "../Sidebar.vue";
 import { reactive, ref } from "vue";
 // import whatsappLight from '@/assets/icons/whatsapp-light.svg'
 // import whatsappSelected from '@/assets/icons/colored-whatsapp.svg'
@@ -273,6 +251,29 @@ const selectedChat = ref(null)
 
 const selectChat = (id) => {
   selectedChat.value = id === selectedChat.value ? null : id }
+
+defineProps({
+  hideText: {
+    type: Boolean,
+    default: false
+  },
+  hideLogo: {
+    type: Boolean,
+    default: false
+  },
+  hideSelect: {
+    type: Boolean,
+    default: false,
+  },
+  hideAddBtn: {
+    type: Boolean,
+    default: false
+  },
+  hideDots: {
+    type: Boolean,
+    default: false
+  }
+})
 </script>
 
 <style scoped>
@@ -284,10 +285,6 @@ const selectChat = (id) => {
   display: flex;
   box-shadow: 0px 0px 38.7px 0px rgba(211, 211, 211, 0.25);
   height: 95vh;
-}
-
-.sidebar {
-  border-radius: 20px;
 }
 
 .overflow-y-auto {

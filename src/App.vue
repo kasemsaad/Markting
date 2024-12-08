@@ -1,6 +1,7 @@
 <script setup>
-  import Dashboard from './components/Whatsapp/Dashboard/Dashboard.vue';
-  import Whatsapp from './components/Whatsapp/Dashboard/Whatsapp.vue';
+  import Dashboard from './components/Dashboard/Dashboard.vue';
+  import Whatsapp from './components/Dashboard/Whatsapp/Whatsapp.vue';
+  import Campaigns from './components/Dashboard/Campaigns.vue';
   import { RouterView } from 'vue-router';
 </script>
 
